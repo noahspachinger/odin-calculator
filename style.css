@@ -1,5 +1,33 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
+    font-family: sans-serif;
 }
 
+#display {
+    height: 20vh;
+    width: 100vw;
+    text-align: right;
+    font-size: 17vh;
+    padding-right: 2vw;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-template-rows: 16vh 16vh 16vh 16vh 16vh;
+}
+
+#specialButtons {
+    grid-column: 1 / 5;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+}
+
+#zero {
+    grid-column: 1 / 4;
+}
+
+.buttons {
+    font-size: 7vh;
+}
