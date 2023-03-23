@@ -35,43 +35,63 @@ function operate(operator, number1, number2) {
     }
 }
 
+
+
 //Eventlisteners to make the values of the buttons appear on the display
+let displayValue = "";
+
 document.getElementById("zero").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("0"));
+    displayValue = displayValue + "0";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("one").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("1"));
+    displayValue = displayValue + "1";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("two").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("2"));
+    displayValue = displayValue + "2";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("three").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("3"));
+    displayValue = displayValue + "3";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("four").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("4"));
+    displayValue = displayValue + "4";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("five").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("5"));
+    displayValue = displayValue + "5";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("six").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("6"));
+    displayValue = displayValue + "6";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("seven").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("7"));
+    displayValue = displayValue + "7";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("eight").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("8"));
+    displayValue = displayValue + "8";
+    document.getElementById("display").textContent = displayValue;
 })
 
 document.getElementById("nine").addEventListener('click', () => {
-    document.getElementById("display").appendChild(document.createTextNode("9"));
+    displayValue = displayValue + "9";
+    document.getElementById("display").textContent = displayValue;
+})
+
+//Back Button, that removes the last characters
+document.getElementById("back").addEventListener('click', () => {
+    displayValue = displayValue.slice(0, -1);
+    document.getElementById("display").textContent = displayValue;
 })
