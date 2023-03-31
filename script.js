@@ -303,6 +303,9 @@ document.getElementById("equal").addEventListener('click', () => {
     }
 
     displayValue = operate(operator, value1, value2);
+    if (displayValue == undefined) {
+        displayValue = "";
+    }
     document.getElementById("display").textContent = displayValue;
     value1 = displayValue;
     value2 = "";
