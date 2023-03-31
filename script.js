@@ -12,8 +12,11 @@ function multiplication(number1, number2) {
 }
 
 function division(number1, number2) {
+    //error if divsion by 0
     if (number2 == 0) {
         alert("You can't divide by 0");
+        clear();
+        return;
     }
     return number1 / number2;
 }
@@ -95,7 +98,20 @@ document.getElementById("back").addEventListener('click', () => {
     document.getElementById("display").textContent = displayValue;
 })
 
-document.getElementById("clear").addEventListener('click', () => {
+//clear button, that resets the calculator
+document.getElementById("clear").addEventListener('click', () => clear())
+    /*displayValue = "";
+    document.getElementById("display").textContent = displayValue;
+    value1 = "";
+    value2 = "";
+    operator = "";
+    document.getElementById("subtraction").style.backgroundColor = "";
+    document.getElementById("multiplication").style.backgroundColor = "";
+    document.getElementById("division").style.backgroundColor = "";
+    document.getElementById("addition").style.backgroundColor = "";
+})*/
+
+function clear() {
     displayValue = "";
     document.getElementById("display").textContent = displayValue;
     value1 = "";
@@ -105,7 +121,9 @@ document.getElementById("clear").addEventListener('click', () => {
     document.getElementById("multiplication").style.backgroundColor = "";
     document.getElementById("division").style.backgroundColor = "";
     document.getElementById("addition").style.backgroundColor = "";
-})
+    number1 = "";
+    number2= "";
+}
 
 //variable declaration
 let value1 = "";
@@ -125,13 +143,11 @@ document.getElementById("addition").addEventListener('click', () => {
     if (value1 == "") {
         value1 = parseInt(displayValue);
         displayValue = "";
-        console.log(value1)
     }
 
     else if (value1 != "") {
         value2 = parseInt(displayValue);
         displayValue = "";
-        console.log(value2);
     }
 
     //call operate function
@@ -142,7 +158,9 @@ document.getElementById("addition").addEventListener('click', () => {
     else if (operator != "") {
         displayValue = operate(operator, value1, value2);
         document.getElementById("display").textContent = displayValue;
+        if (displayValue != undefined) {
         value1 = parseInt(displayValue);
+        }
         value2 = "";
         displayValue = "";
         operator = "addition";
@@ -162,13 +180,11 @@ document.getElementById("subtraction").addEventListener('click', () => {
     if (value1 == "") {
         value1 = parseInt(displayValue);
         displayValue = "";
-        console.log(value1)
     }
 
     else if (value1 != "") {
         value2 = parseInt(displayValue);
         displayValue = "";
-        console.log(value2);
     }
 
     //call operate function
@@ -179,7 +195,9 @@ document.getElementById("subtraction").addEventListener('click', () => {
     else if (operator != "") {
         displayValue = operate(operator, value1, value2);
         document.getElementById("display").textContent = displayValue;
-        value1 = parseInt(displayValue);
+        if (displayValue != undefined) {
+            value1 = parseInt(displayValue);
+            }
         value2 = "";
         displayValue = "";
         operator = "subtraction";
@@ -216,7 +234,9 @@ document.getElementById("multiplication").addEventListener('click', () => {
     else if (operator != "") {
         displayValue = operate(operator, value1, value2);
         document.getElementById("display").textContent = displayValue;
-        value1 = parseInt(displayValue);
+        if (displayValue != undefined) {
+            value1 = parseInt(displayValue);
+            }
         value2 = "";
         displayValue = "";
         operator = "multiplication";
@@ -253,9 +273,18 @@ document.getElementById("division").addEventListener('click', () => {
     else if (operator != "") {
         displayValue = operate(operator, value1, value2);
         document.getElementById("display").textContent = displayValue;
-        value1 = parseInt(displayValue);
+        if (displayValue != undefined) {
+            value1 = parseInt(displayValue);
+            }
         value2 = "";
         displayValue = "";
         operator = "division";
+    }
+})
+
+document.getElementById("equal").addEventListener('click', () => {
+    displayValue = value2;
+    if(value1 == "") {
+        alert("You have to type in something");
     }
 })
