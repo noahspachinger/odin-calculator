@@ -1,14 +1,14 @@
 //basic math funtions
 function addition(number1, number2) {
-    return number1 + number2;
+    return +(Math.round(number1 + number2 + "e+2")  + "e-2");
 }
 
 function subtraction(number1, number2) {
-    return number1 - number2
+    return +(Math.round(number1 - number2 + "e+2")  + "e-2");
 }
 
 function multiplication(number1, number2) {
-    return number1 * number2;
+    return +(Math.round(number1 * number2 + "e+2")  + "e-2");
 }
 
 function division(number1, number2) {
@@ -18,7 +18,7 @@ function division(number1, number2) {
         clear();
         return;
     }
-    return number1 / number2;
+    return +(Math.round(number1 / number2 + "e+2")  + "e-2");
 }
 
 //executes the math functions
@@ -100,16 +100,6 @@ document.getElementById("back").addEventListener('click', () => {
 
 //clear button, that resets the calculator
 document.getElementById("clear").addEventListener('click', () => clear())
-    /*displayValue = "";
-    document.getElementById("display").textContent = displayValue;
-    value1 = "";
-    value2 = "";
-    operator = "";
-    document.getElementById("subtraction").style.backgroundColor = "";
-    document.getElementById("multiplication").style.backgroundColor = "";
-    document.getElementById("division").style.backgroundColor = "";
-    document.getElementById("addition").style.backgroundColor = "";
-})*/
 
 function clear() {
     displayValue = "";
@@ -146,6 +136,10 @@ document.getElementById("addition").addEventListener('click', () => {
     }
 
     else if (value1 != "") {
+        if (displayValue == "") {
+            operator = "addition";
+            return;
+        }
         value2 = parseInt(displayValue);
         displayValue = "";
     }
@@ -183,6 +177,10 @@ document.getElementById("subtraction").addEventListener('click', () => {
     }
 
     else if (value1 != "") {
+        if (displayValue == "") {
+            operator = "subtraction";
+            return;
+        }
         value2 = parseInt(displayValue);
         displayValue = "";
     }
@@ -217,13 +215,15 @@ document.getElementById("multiplication").addEventListener('click', () => {
     if (value1 == "") {
         value1 = parseInt(displayValue);
         displayValue = "";
-        console.log(value1)
     }
 
     else if (value1 != "") {
+        if (displayValue == "") {
+            operator = "multiplication";
+            return;
+        }
         value2 = parseInt(displayValue);
         displayValue = "";
-        console.log(value2);
     }
 
     //call operate function
@@ -256,13 +256,15 @@ document.getElementById("division").addEventListener('click', () => {
     if (value1 == "") {
         value1 = parseInt(displayValue);
         displayValue = "";
-        console.log(value1)
     }
 
     else if (value1 != "") {
+        if (displayValue == "") {
+            operator = "division";
+            return;
+        }
         value2 = parseInt(displayValue);
         displayValue = "";
-        console.log(value2);
     }
 
     //call operate function
@@ -282,9 +284,31 @@ document.getElementById("division").addEventListener('click', () => {
     }
 })
 
+//equal button
 document.getElementById("equal").addEventListener('click', () => {
-    displayValue = value2;
     if(value1 == "") {
         alert("You have to type in something");
+        return;
     }
+    
+    if(operator == "") {
+        alert("You have to type in something");
+        return;
+    }
+
+    value2 = parseInt(displayValue);
+    if (isNaN(value2)) {
+        alert("You have to type in something");
+        return;
+    }
+
+    displayValue = operate(operator, value1, value2);
+    document.getElementById("display").textContent = displayValue;
+    value1 = displayValue;
+    value2 = "";
+    operator = "";
+    document.getElementById("subtraction").style.backgroundColor = "";
+    document.getElementById("multiplication").style.backgroundColor = "";
+    document.getElementById("division").style.backgroundColor = "";
+    document.getElementById("addition").style.backgroundColor = "";
 })
